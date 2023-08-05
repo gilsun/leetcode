@@ -13,15 +13,14 @@ var findMedianSortedArrays = function(nums1, nums2) {
 
     let left = 0;
     let right = m;
-    const halfLen = Math.floor((m + n + 1) / 2);
 
     while (left <= right) {
         const partition1 = Math.floor((left + right) / 2);
-        const partition2 = halfLen - partition1;
+        const partition2 = Math.floor((m + n + 1) / 2) - partition1;
 
         const maxLeft1 = (partition1 === 0) ? -Infinity : nums1[partition1 - 1];
         const minRight1 = (partition1 === m) ? Infinity : nums1[partition1];
-        
+
         const maxLeft2 = (partition2 === 0) ? -Infinity : nums2[partition2 - 1];
         const minRight2 = (partition2 === n) ? Infinity : nums2[partition2];
 
@@ -41,3 +40,9 @@ var findMedianSortedArrays = function(nums1, nums2) {
         }
     }
 };
+
+
+
+
+
+
