@@ -4,10 +4,11 @@
  * @return {number}
  */
 var leastInterval = function(tasks, n) {
-    let map = Array(26).fill(0);
+    let map = new Array(26).fill(0);
+    console.log(map)
     
     for(let task of tasks) {
-        map[task.charCodeAt(0) - "A".charCodeAt(0)]++;
+        map[task.charCodeAt() - "A".charCodeAt()]++;
     }
     
     map.sort((a, b) => a - b);
