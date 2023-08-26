@@ -12,16 +12,24 @@
 // ...
 // Z: 90
 var leastInterval = function(tasks, n) {
-    let map = Array(26).fill(0);
-
-    // 각 태스크의 빈도수를 구합니다.
-    for(let task of tasks) {
-        map[task.charCodeAt(0) - "A".charCodeAt(0)]++;
+   let taskCount = new Array(26).fill(0);
+   
+   for (let task of tasks) {
+       let index = task.charCodeAt() - "A".charCodeAt();
+       taskCount[index]++;
+   }
+    
+    taskCount.sort((a,b) => a - b);
+    
+    let mostFrequentTaskCount = taskCount[25];
+    let idleCount = (mostFrequentTaskCount - 1) * n;
+    
+    for (let i = 24; i >= 0 && taskCount[i] > 0; i--) {
+        idleCount -= Math.min(taskCount[i], mostFrequentTaskCount - 1);
     }
     
-    // 최대 빈도수를 찾습니다.
-    let max_val = Math.max(...map);
-    let countOfMaxVal = map.filter(val => val === max_val).length;
-    
-    return Math.max((max_val - 1) * (n + 1) + countOfMaxVal, tasks.length);
+    if (idleCount > 0) return idleCount + tasks.length;
+    else return tasks.length;
 };
+    
+
