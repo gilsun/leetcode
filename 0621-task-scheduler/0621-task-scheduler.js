@@ -22,13 +22,14 @@ var leastInterval = function(tasks, n) {
     taskCount.sort((a,b) => a - b);
     
     let mostFrequentTaskCount = taskCount[25];
-    let idleCount = (mostFrequentTaskCount - 1) * n;
+   
+    let totalIdleCount = (mostFrequentTaskCount - 1) * n;
     
     for (let i = 24; i >= 0 && taskCount[i] > 0; i--) {
-        idleCount -= Math.min(taskCount[i], mostFrequentTaskCount - 1);
+        totalIdleCount = totalIdleCount - Math.min(taskCount[i], mostFrequentTaskCount - 1);
     }
     
-    if (idleCount > 0) return idleCount + tasks.length;
+    if (totalIdleCount > 0) return totalIdleCount + tasks.length;
     else return tasks.length;
 };
     
