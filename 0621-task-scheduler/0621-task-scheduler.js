@@ -26,7 +26,7 @@ var leastInterval = function(tasks, n) {
 
 
     for (let i = 1; i < counts.length; i++) {
-         idle -= Math.min(counts[i], most - 1, idle);
+         idle = idle-Math.min(counts[i], most - 1, idle);
         if (idle === 0) break 
     }
     
