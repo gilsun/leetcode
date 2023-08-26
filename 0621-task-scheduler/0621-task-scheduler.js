@@ -15,11 +15,10 @@ var leastInterval = function(tasks, n) {
         map[task]++
     }
     
-    console.log('map', map)
     let counts = Object.values(map)
- 
+
     counts.sort((a,b) => b - a)
-    console.log('counts', counts )
+
     
     let most = counts[0]
     let idle = (most - 1)*n 
