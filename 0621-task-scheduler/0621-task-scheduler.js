@@ -17,9 +17,12 @@ const leastInterval = function(tasks, n) {
 
   // 각 작업의 빈도를 계산합니다.
   const counts = Array.from(counter(tasks).values());
+    console.log(counts)
 
   // counts를 내림차순으로 정렬합니다. (최대 26개의 알파벳만 존재하므로 O(1) 복잡도입니다.)
   counts.sort((a, b) => b - a);
+     console.log(counts)
+
 
   // 가장 빈번하게 등장하는 작업의 빈도입니다.
   const most = counts[0];
@@ -28,7 +31,7 @@ const leastInterval = function(tasks, n) {
   let idle = (most - 1) * n;
 
   // 두 번째로 많이 등장하는 작업부터, 빈번한 작업 사이에 넣을 수 있는 작업의 수를 계산합니다.
-  for (let i = 1; i < counts.length; i += 1) {
+  for (let i = 1; i < counts.length; i++) {
     // 남아있는 대기 시간에서 현재 작업 빈도(또는 most-1, 남아있는 idle 중 작은 것)를 빼줍니다.
     idle -= Math.min(counts[i], most - 1, idle);
     
