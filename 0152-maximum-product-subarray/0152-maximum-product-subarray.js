@@ -17,7 +17,7 @@ var maxProduct = function(nums) {
         }
         
         let temp = num * curMin 
-        curMin = Math.min(num * curMin, num * curMax, num)
+        curMin = Math.min(temp, num * curMax, num) 
         curMax = Math.max (num * curMax, temp, num )
         
         res = Math.max(res, curMax)
