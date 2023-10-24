@@ -5,7 +5,7 @@
  */
 var insert = function(intervals, newInterval) {
 
-    const isOverLap = (a,b)=>{
+    const isOverLapping = (a,b)=>{
         return a[1] >= b[0]
     } 
 
@@ -22,7 +22,7 @@ var insert = function(intervals, newInterval) {
     }
 
 
-    while ( i < intervals.length && isOverLap(newInterval, intervals[i])) {
+    while ( i < intervals.length && isOverLapping(newInterval, intervals[i])) {
         newInterval = mergeInterval (newInterval, intervals[i])
         i++
     }
