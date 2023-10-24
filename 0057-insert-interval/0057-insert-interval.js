@@ -3,34 +3,38 @@
  * @param {number[]} newInterval
  * @return {number[][]}
  */
-function doesIntervalsOverlap(a, b) {
-    return a[1] >= b[0];
-}
+var insert = function(intervals, newInterval) {
 
-function mergeIntervals(a, b) {
-    return [Math.min(a[0], b[0]), Math.max(a[1], b[1])];
-}
+    const isOverLap = (a,b)=>{
+        return a[1] >= b[0]
+    } 
 
-function insert(intervals, newInterval) {
-    const result = [];
-    let i = 0;
-
-    while (i < intervals.length && intervals[i][1] < newInterval[0]) {
-        result.push(intervals[i]);
-        i++;
+    const mergeInterval = (a,b) =>{
+        return [ Math.min(a[0], b[0]), Math.max(a[1], b[1])]
     }
 
-    while (i < intervals.length && doesIntervalsOverlap(newInterval, intervals[i])) {
-        newInterval = mergeIntervals(newInterval, intervals[i]);
-        i++;
+    const res = [ ]
+    let i = 0 
+
+    while ( i < intervals.length  && intervals[i][1] < newInterval[0]) {
+        res.push(intervals[i])
+        i ++ 
     }
 
-    result.push(newInterval);
 
-    while (i < intervals.length) {
-        result.push(intervals[i]);
-        i++;
+    while ( i < intervals.length && isOverLap(newInterval, intervals[i])) {
+        newInterval = mergeInterval (newInterval, intervals[i])
+        i++
     }
 
-    return result;
-}
+    res.push(newInterval)
+
+    while ( i < intervals.length) {
+        res.push(intervals[i])
+        i ++
+    }
+
+    return res 
+
+
+};
