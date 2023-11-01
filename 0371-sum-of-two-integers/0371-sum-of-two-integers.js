@@ -4,19 +4,24 @@
  * @return {number}
  */
 var getSum = function(a, b) {
-        // 입력된 두 정수 a와 b가 32비트 정수 범위 내에 있다고 가정합니다.
-  
-    // 자바스크립트에서는 숫자를 64비트 부동소수점으로 처리하지만,
-    // 비트 연산을 수행할 때는 32비트 정수로 처리됩니다.
-    // 이때, 음수는 2의 보수 방식으로 표현됩니다.
-  
-    // 32비트 정수의 범위를 벗어나는 비트를 제거하기 위해 0x3FFFFFFF와 AND 연산을 수행합니다.
-    // 그리고 0xFFFFFFFF와 AND 연산을 수행하여 음수의 경우에도 올바르게 처리합니다.
-  
-    while (b !== 0) { // b가 0이 될 때까지 반복합니다.
-        let carry = (a & b) << 1; // AND 연산 후 왼쪽으로 1비트 시프트하여 캐리를 계산합니다.
-        a = a ^ b; // XOR 연산으로 합을 계산합니다.
-        b = carry; // 캐리를 b로 설정하여 다음 반복에서 사용합니다.
+     // AND (&) => both bits 1 => carry에 사용 
+    // << move bits to left  => carry에 사용 
+    // carry = a & b << 1 
+
+    // XOR (^) => only one of two bits 1 => 합계산에 이용 
+    // sum = a ^ b 
+
+    // carry and sum 
+    // a => sum update 
+    // b = carry updat 
+
+    while (b !== 0 ) {
+        let carry = (a & b ) << 1
+        let sum = a ^ b 
+        a = sum 
+        b = carry 
     }
-    return a; // 최종 합을 반환합니다.
+
+    return a 
+
 };
