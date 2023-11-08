@@ -3,37 +3,58 @@
  * @param {number} k
  * @return {number}
  */
+// var distributeCookies = function(cookies, k) {
+//     // 각 아이가 가진 쿠키의 단맛 합계를 저장하는 배열
+//     const childSums = new Array(k).fill(0);
+
+//     // 현재까지의 최소 최대 단맛 값을 저장하는 변수
+//     let minMax = Infinity;
+
+//     // 쿠키를 분배하는 함수
+//     function distribute(index) {
+//         // 모든 쿠키가 분배된 경우
+//         if (index === cookies.length) {
+//             // 현재의 최대 단맛 값을 찾음
+//             const currentMax = Math.max(...childSums);
+//             // 전역 최소 최대 단맛 값 업데이트
+//             minMax = Math.min(minMax, currentMax);
+//             return;
+//         }
+
+//         // 각 아이에게 현재 쿠키를 시도적으로 할당
+//         for (let i = 0; i < k; i++) {
+//             childSums[i] += cookies[index];
+//             distribute(index + 1);
+//             // 백트래킹: 할당 취소
+//             childSums[i] -= cookies[index];
+//         }
+//     }
+
+//     // 분배 시작
+//     distribute(0);
+
+//     // 최소 최대 단맛 값 반환
+//     return minMax;
+// };
+
 var distributeCookies = function(cookies, k) {
-     const cur = new Array(k).fill(0);
-    const n = cookies.length;
-
-    function dfs(i, zeroCount) {
-        // 남은 쿠키가 부족한 경우, 유효하지 않은 분배로 간주하고 무한대를 반환
-        if (n - i < zeroCount) {
-            return Infinity;
-        }
-
-        // 모든 쿠키를 분배한 후, 이 분배의 불공정성을 반환
-        if (i === n) {
-            return Math.max(...cur);
-        }
-
-        // i번째 쿠키를 각 아이에게 분배해 보고, 이 분배들 중 최소 불공정성을 업데이트
-        let answer = Infinity;
-        for (let j = 0; j < k; j++) {
-            zeroCount -= cur[j] === 0 ? 1 : 0;
-            cur[j] += cookies[i];
-
-            // 다음 쿠키를 재귀적으로 분배
-            answer = Math.min(answer, dfs(i + 1, zeroCount));
-
-            // 백트래킹
-            cur[j] -= cookies[i];
-            zeroCount += cur[j] === 0 ? 1 : 0;
-        }
-
-        return answer;
+  let result = Number.MAX_VALUE
+  let children = Array(k).fill(0);
+  function dfs(cookies, cur, k, children) {
+    if (cur == cookies.length) {
+        // let max = 0;
+      
+        curMax = Math.max(...children);
+        result = Math.min(result, curMax);
+        return;
     }
+    for (let i = 0; i < k; i++) {
+        children[i] += cookies[cur]; // choose
+        dfs(cookies, cur + 1, k, children); //explore
+        children[i] -= cookies[cur]; //un-choose
+    }
+  }
 
-    return dfs(0, k);
+  dfs(cookies, 0, k, children);
+  return result;
 };
