@@ -19,19 +19,49 @@ n = 2 (1 * 1) = 1
 n = 3 (1 * 2 )= 2 
 n = 4 (2 * 2) = 4 
  
+
+ 1) dp & memorization 
  */
- if (n <= 3){
-     return n - 1 
- }
+
+//  let memo = {}
+//  if (n <= 3) {
+//      return n - 1
+//  }
+
+//  const dp = (num) =>{
+
+//  }
+
+// return dp(n)
 
 
-let res = 1 
- while ( n > 4 ){
-    res *= 3 
-    n -= 3 
- }
+    const memo = {};
 
-return res * n 
+    function dp(num) {
+        if (num <= 3) {
+            return num;
+        }
+
+        if (memo[num]) {
+            return memo[num];
+        }
+
+        let ans = num;
+        for (let i = 2; i < num; i++) {
+            let val = i * dp(num - i)
+            ans = Math.max(ans,val);
+        }
+
+        memo[num] = ans;
+        return ans;
+    }
+
+    if (n <= 3) {
+        return n - 1;
+    }
+
+    return dp(n);
+
 
 
 }
