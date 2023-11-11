@@ -16,7 +16,8 @@ function integerBreak(n) {
 
         let ans = num;
         for (let i = 2; i < num; i++) {
-            ans = Math.max(ans, i * dp(num - i));
+            let val = i * dp(num - i)
+            ans = Math.max(ans,val );
         }
 
         memo[num] = ans;
