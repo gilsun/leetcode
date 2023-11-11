@@ -13,7 +13,7 @@ const memo = {}
     if(memo[num]) {
         return memo[num]
     }
-     let res = num 
+     let res = num
      for (let i = 1 ; i < num ; i ++) {
          let val = i * dp(num - i )
          res = Math.max(res,val)
