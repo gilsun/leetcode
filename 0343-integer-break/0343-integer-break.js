@@ -36,11 +36,14 @@ n = 4 (2 * 2) = 4
 
 
     const memo = {};
+   if (n <= 3) {
+        return n - 1;
+    }
 
     function dp(num) {
-        if (num <= 3) {
-            return num;
-        }
+        // if (num <= 3) {
+        //     return num;
+        // }
 
         if (memo[num]) {
             return memo[num];
@@ -56,10 +59,7 @@ n = 4 (2 * 2) = 4
         return ans;
     }
 
-    if (n <= 3) {
-        return n - 1;
-    }
-
+ 
     return dp(n);
 
 
