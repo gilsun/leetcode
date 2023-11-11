@@ -3,30 +3,13 @@
  * @return {number}
  */
 function integerBreak(n) {
-    const dpMemo = {};
-
-    function dp(num) {
-        if (num <= 3) {
-            return num;
+   const dp = {1: 1};
+        for (let num = 2; num <= n; num++) {
+            dp[num] = (num === n) ? 0 : num;
+            for (let i = 1; i < num; i++) {
+                const val = dp[i] * dp[num - i];
+                dp[num] = Math.max(dp[num], val);
+            }
         }
-
-        if (dpMemo[num]) {
-            return dpMemo[num];
-        }
-
-        let ans = num;
-        for (let i = 2; i < num; i++) {
-            ans = Math.max(ans, i * dp(num - i));
-        }
-
-        dpMemo[num] = ans;
-
-        return ans;
-    }
-
-    if (n <= 3) {
-        return n - 1;
-    }
-
-    return dp(n);
+        return dp[n];
 }
