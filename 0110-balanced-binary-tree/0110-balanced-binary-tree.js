@@ -12,14 +12,14 @@
  */
 var isBalanced = function(root) {
     // 재귀 함수를 정의합니다. 이 함수는 노드의 높이를 반환하거나, 균형이 깨졌을 때 -1을 반환합니다.
-    const checkBalance = (node) => {
-        if (node === null) {
+    const checkBalance = (root) => {
+        if (root === null) {
             return 0; // 빈 노드의 높이는 0입니다.
         }
 
         // 왼쪽과 오른쪽 서브트리의 높이를 계산합니다.
-        let leftHeight = checkBalance(node.left);
-        let rightHeight = checkBalance(node.right);
+        let leftHeight = checkBalance(root.left);
+        let rightHeight = checkBalance(root.right);
 
         // 균형이 깨진 경우, -1을 전파합니다.
         if (leftHeight === -1 || rightHeight === -1 || Math.abs(leftHeight - rightHeight) > 1) {
