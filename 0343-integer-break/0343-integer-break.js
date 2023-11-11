@@ -3,30 +3,35 @@
  * @return {number}
  */
 function integerBreak(n) {
-    const memo = {};
 
-    function dp(num) {
-        if (num <= 3) {
-            return num;
-        }
 
-        if (memo[num]) {
-            return memo[num];
-        }
+/*
+1) dp & memorization 
 
-        let ans = num;
-        for (let i = 2; i < num; i++) {
-            let val = i * dp(num - i)
-            ans = Math.max(ans,val );
-        }
+2) 3을 곱해서 푸는 방법 
 
-        memo[num] = ans;
-        return ans;
-    }
+n = 10
+3 * 3* 4  = 36 
+5 * 3* 2 = 30 
 
-    if (n <= 3) {
-        return n - 1;
-    }
 
-    return dp(n);
+n = 2 (1 * 1) = 1 
+n = 3 (1 * 2 )= 2 
+n = 4 (2 * 2) = 4 
+ 
+ */
+ if (n <= 3){
+     return n - 1 
+ }
+
+
+let res = 1 
+ while ( n > 4 ){
+    res *= 3 
+    n -= 3 
+ }
+
+return res * n 
+
+
 }
