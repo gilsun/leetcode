@@ -16,7 +16,7 @@ var isSameTree = function(p, q) {
         // 두 노드를 확인하는 함수
         function check(p, q) {
             // 두 노드가 모두 null이면 true 반환
-            if (!p && !q) {
+            if (p === null && q === null) {
                 return true;
             }
             // 한쪽 노드만 null이면 false 반환
