@@ -20,7 +20,7 @@ var isSameTree = function(p, q) {
                 return true;
             }
             // 한쪽 노드만 null이면 false 반환
-            if (!p || !q) {
+            if (p === null || q === null) {
                 return false;
             }
             // 두 노드의 값이 다르면 false 반환
