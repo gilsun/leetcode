@@ -3,7 +3,9 @@
  * @return {string[][]}
  */
 const groupAnagrams = function(strs) {
-    const map = new Map();
+
+    /*
+        const map = new Map();
     
     for (const str of strs) {
         const sortedStr = str.split('').sort().join('');
@@ -14,4 +16,35 @@ const groupAnagrams = function(strs) {
     }
     
     return Array.from(map.values());
+    */
+    
+
+    /*
+    
+    let map = {}
+    for (let i = 0; i < strs.length; i ++){
+       let sortedStr= strs[i].split('').sort().join('')
+       if(!map[sortedStr]){
+           map[sortedStr] = []
+       }
+       map[sortedStr].push(strs[i])
+    }
+    let res = Object.values(map)
+    return res
+
+    */
+
+
+    let map = {}
+    for (const str of strs){
+       let sortedStr= str.split('').sort().join('')
+       if(!map[sortedStr]){
+           map[sortedStr] = []
+       }
+       map[sortedStr].push(str)
+    }
+    let res = Object.values(map)
+    return res
+    
+    
 };
