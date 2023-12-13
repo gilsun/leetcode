@@ -34,6 +34,9 @@ const groupAnagrams = function(strs) {
 
     */
 
+    // sort by alphabet each str 
+    // { sortedStr: [original str ]   }
+    // return map's values => Object.values(map)
 
     let map = {}
     for (const str of strs){
