@@ -9,7 +9,16 @@
 /**
  * @param {TreeNode} root
  * @return {number[][]}
+ *
+ *
  */
+
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
 var verticalOrder = function (root) {
   if (!root) {
     return [];
@@ -47,3 +56,12 @@ var verticalOrder = function (root) {
 
   return res;
 };
+
+const root = new TreeNode(3);
+root.left = new TreeNode(9);
+root.right = new TreeNode(20);
+root.right.left = new TreeNode(15);
+root.right.right = new TreeNode(7);
+
+// 주어진 함수를 실행합니다.
+console.log(verticalOrder(root));
