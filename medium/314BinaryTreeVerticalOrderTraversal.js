@@ -63,5 +63,4 @@ root.right = new TreeNode(20);
 root.right.left = new TreeNode(15);
 root.right.right = new TreeNode(7);
 
-// 주어진 함수를 실행합니다.
 console.log(verticalOrder(root));
