@@ -15,12 +15,6 @@ var verticalOrder = function (root) {
     return [];
   }
 
-  let columnItems = {};
-  let queue = [[0, root]];
-  let min_x = Infinity;
-  let max_x = -Infinity;
-  let res = [];
-
   while (queue.length > 0) {
     let [x, node] = queue.shift();
 
