@@ -1,5 +1,6 @@
 var validWordAbbreviation = function (word, abbr) {
   `
+  two pointer 
   abbr ="i12iz4n"
    i =>  if(inNaN(parseInt(abbr[abbrPointer]))) => true
    wordPointer => 1
