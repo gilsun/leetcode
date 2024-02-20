@@ -1,6 +1,3 @@
-/**
- * @param {number[]} nums
- */
 var Solution = function (nums) {
   this.original = nums.slice();
   this.nums = nums.slice();
